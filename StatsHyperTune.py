@@ -342,7 +342,9 @@ class HyperParameterTuning:
         m2_list = []
         bias_list = []
 
-        def gradient_descent(X1, X2, y, iteration=100, learning_rate=0.1, loss_threshhold=0.10):
+        def gradient_descent(X1, X2, y, iteration=100, learning_rate=0.1A
+
+        ):
             m1 = m2 = 1
             bias = 0
             n = len(X1)
