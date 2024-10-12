@@ -36,7 +36,7 @@ def main():
         raw_df = pd.read_csv("salaryData.csv")
         home = Home(raw_df)
     if options == "Data Cleaning":
-        cleaner = Cleaner("SalaryData.csv")
+        cleaner = Cleaner("salaryData.csv")
         cleaner.dropNullValues()
         cleaner.dropDuplicates()
     if options == "Data analysis and visualization":
