@@ -512,38 +512,3 @@ class StatsModelling:
         return age, level, experience
 
 
-class DeepLearning:
-    def __init__(self, clustered_data):
-        self.data = clustered_data
-
-    def model(self):
-        X = self.data.drop(columns=["Salary", "Education Level"], axis=1)
-        y = self.data["Salary"]
-
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15)
-        model = tf.keras.Sequential([
-            tf.keras.layers.Dense(100, activation="relu"),
-            tf.keras.layers.Dense(50, activation="relu"),
-            tf.keras.layers.Dense(25, activation="relu"),
-            tf.keras.layers.Dense(1, activation="linear")
-        ])
-        model.compile(
-            optimizer="adam",
-            loss="mean_squared_error",
-            metrics=["mean_absolute_error"]
-        )
-        model.fit(X_train, y_train, validation_split=0.15, epochs=1100)
-        y_predicted = model.predict(X_test)
-        score = r2_score(y_test, y_predicted)
-        st.success(f"The model accuracy Score = {score * 100}%")
-        return model
-
-    @staticmethod
-    def predict(age, level, experience, estimator):
-        X_new = pd.DataFrame({
-            "age": [age],
-            "experience": [experience],
-            "level": [level]
-        })
-        salary = estimator.predict(X_new)
-        return salary
