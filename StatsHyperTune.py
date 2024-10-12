@@ -8,7 +8,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import MinMaxScaler
-import tensorflow as tf
 from sklearn.metrics import r2_score
 
 
