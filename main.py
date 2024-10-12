@@ -5,7 +5,7 @@ def main():
     from CleanerPage import Cleaner
     from Exploratory import EDA, Plot
     from HomePage import Home
-    from StatsHyperTune import HyperParameterTuning, StatsModelling, DeepLearning
+    from StatsHyperTune import HyperParameterTuning, StatsModelling
 
     # Page 1 - Homepage
     st.set_page_config(
