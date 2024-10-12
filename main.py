@@ -16,8 +16,7 @@ def main():
     options = st.sidebar.selectbox(
         "Sections",
         [] + ["Home Page", "Data Cleaning", "Data analysis and visualization", "Statistical Hyper Parameter Tuning",
-              "Statistical Modelling and prediction",
-              "Deep Learning modelling and Prediction"])
+              "Statistical Modelling and prediction"])
     st.sidebar.success("Select an option above.")
     if st.sidebar.button("Sign out"):
         st.session_state.login_success = False
@@ -33,16 +32,6 @@ def main():
 
     hyper_df = HyperParameterTuning(anomalied_data)
     clustered_data = hyper_df.copy
-    if options == "Deep Learning modelling and Prediction":
-        st.markdown("---")
-        st.header("Deep Learning Modelling and Prediction")
-        deep = DeepLearning(clustered_data)
-        age, level, experience = StatsModelling.inputField()
-        age, level, experience = StatsModelling.userScaling(scaler, age, level, experience)
-        estimator = deep.model()
-        predicted_salary = deep.predict(age, level, experience, estimator)
-        st.write("\n\n\n")
-        st.success(f"Predicted salary = {predicted_salary[0][0]}ksh")
     if options == "Home Page":
         raw_df = pd.read_csv("salaryData.csv")
         home = Home(raw_df)
